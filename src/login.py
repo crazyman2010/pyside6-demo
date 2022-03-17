@@ -13,6 +13,7 @@ class LoginWindow(QWidget):
         self.ui.setupUi(self)
         # 显示自己
         self.show()
+        self.closeSplash()
 
     def slotClickLoginButton(self):
         userName = self.ui.textEdit_userName.toPlainText()
@@ -20,3 +21,11 @@ class LoginWindow(QWidget):
         QMessageBox.information(self, '登录', '登录成功:' + userName + '/' + password + '，点击确定跳转到主窗口')
         self.close()
         self.parent.show()
+
+    def closeSplash(self):
+        try:
+            import pyi_splash
+            pyi_splash.update_text('UI Loaded ...')
+            pyi_splash.close()
+        except:
+            pass
